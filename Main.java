@@ -18,7 +18,7 @@ public class Main                                                               
         if (chooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION)                            {
             System.out.println("No folder selected. The Java gods are spared... for now."           );
             return                                                                                  ;
-        }
+                                                                                                    }
 
         Path root = chooser.getSelectedFile().toPath                                                ();
         Path scoliosisRoot = root.resolve("SyntaxScoliosis"                                         );
@@ -27,8 +27,8 @@ public class Main                                                               
                 .filter(p -> p.toString().endsWith(".java"                                          ))
                 .forEach(p -> adjustFile(p, root, scoliosisRoot                                     ));
 
-        System.out.println("\nAll files have been adjusted inside: " + scoliosisRoot             );
-    }
+        System.out.println("\nAll files have been adjusted inside: " + scoliosisRoot                );
+                                                                                                    }
 
     private static void adjustFile(Path filePath, Path root, Path scoliosisRoot)                    {
         try                                                                                         {
@@ -42,15 +42,15 @@ public class Main                                                               
 
             for (String line : lines)                                                               {
                 adjustedLines.add(adjustLine(line                                                   ));
-            }
+                                                                                                    }
 
             Files.write(outPath, adjustedLines                                                      );
             System.out.println("Aligned: " + relativePath                                           );
 
         } catch (IOException e)                                                                     {
             e.printStackTrace                                                                       ();
-        }
-    }
+                                                                                                    }
+                                                                                                    }
 
     private static String adjustLine(String line)                                                   {
         Matcher m = TRAILING_SYMBOLS.matcher(line                                                   );
@@ -65,7 +65,7 @@ public class Main                                                               
         if (len < WALL_COLUMN)                                                                      {
             int pad = WALL_COLUMN - len                                                             ;
             return before + " ".repeat(pad) + trailing                                              ;
-        }
+                                                                                                    }
         return line                                                                                 ;
-    }
-}
+                                                                                                    }
+                                                                                                    }
